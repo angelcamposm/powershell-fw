@@ -37,6 +37,9 @@ This command outputs this line:
 ```powershell
 
 # Write a log with tags
+$logger = [LOGGER]::New().setDaily().addItem('wait_time', 50).addItem('device', 'blackbox').addItem('ip_address', '192.168.10.254').addItem('user', 'acamposm').Write();
+
+# OR
 $logger = [LOGGER]::New().
     setDaily().
     addItem('wait_time', 50).
