@@ -30,9 +30,7 @@ $logger = [LOGGER]::New().setDaily().setLevel([LEVEL]::INFORMATIONAL).setMessage
 This command outputs this line:
 
 ```
-
 [2020/09/04 1:34:11][INFORMATIONAL] TEST message
-
 ```
 
 
@@ -52,7 +50,5 @@ $logger = [LOGGER]::New().
 This command outputs this line of log:
 
 ```
-
 [2020/09/04 1:39:59] wait_time="50"; device="blackbox"; ip_address="192.168.10.254"; user="acamposm"
-
 ```
