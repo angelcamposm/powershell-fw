@@ -11,11 +11,18 @@
 
 Class LOGGER
 {
+    #region PROPERTIES
+
     hidden [bool]$daily;
     hidden [System.Collections.ArrayList]$items;
     hidden [string]$level;
     hidden [string]$message;
     hidden [string]$path;
+    hidden [string]$separator;
+
+    #endregion
+
+    #region CONSTRUCTORS
 
     LOGGER()
     {
@@ -24,11 +31,16 @@ Class LOGGER
         $this.level = $null;
         $this.message = $null;
         $this.path = 'C:\Temp\';
+        $this.separator = '; ';
     }
 
-    [LOGGER]addItem([string]$item)
+    #endregion
+
+    #region METHODS
+
+    [LOGGER]addItem([string]$item, [string]$value)
     {
-        $this.items.Add("$($item)");
+        $this.items.Add($item + '="' + $value + '"');
 
         return $this;
     }
@@ -91,6 +103,13 @@ Class LOGGER
         return $this;
     }
 
+    [LOGGER]setSeparator([string]$separator)
+    {
+        $this.separator = $separator;
+
+        return $this;
+    }
+
     [void]Write()
     {
         [LOGGER]::checkPath($this.path);
@@ -104,7 +123,7 @@ Class LOGGER
 
         if ([string]::IsNullOrEmpty($this.message)) 
         {
-            $msg += ' ' + $($this.items -join '; ');
+            $msg += ' ' + $($this.items -join $this.separator);
         }
         else 
         {
@@ -113,4 +132,6 @@ Class LOGGER
 
         $msg | Out-File -FilePath $($this.path + $this.getFileName()) -Encoding utf8 -Append
     }
+
+    #endregion
 }
