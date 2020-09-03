@@ -97,7 +97,7 @@ Class LOGGER
 
         $msg = $this.getHeader();
 
-        if ([string]::IsNullOrEmpty($this.message) -eq $true) 
+        if ([string]::IsNullOrEmpty($this.message)) 
         {
             $msg += $this.getLevel() + ' ' + $($this.items -join '; ');
         }
