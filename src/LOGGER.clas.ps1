@@ -97,13 +97,18 @@ Class LOGGER
 
         $msg = $this.getHeader();
 
+        if (($this.getLevel()).Length -gt 0) 
+        {
+            $msg += $this.getLevel();
+        }
+
         if ([string]::IsNullOrEmpty($this.message)) 
         {
-            $msg += $this.getLevel() + ' ' + $($this.items -join '; ');
+            $msg += ' ' + $($this.items -join '; ');
         }
         else 
         {
-            $msg += $this.getLevel() + ' ' + $this.message;
+            $msg += ' ' + $this.message;
         }
 
         $msg | Out-File -FilePath $($this.path + $this.getFileName()) -Encoding utf8 -Append
