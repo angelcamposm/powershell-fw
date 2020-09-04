@@ -135,7 +135,7 @@ Class LOGGER
         
     [LOGGER]setPath([string]$path)
     {
-        $this.path = $path + $(if ($path.EndsWith('\')) { ''; } else { '\'; })
+        $this.path = $path + $(if ($path.EndsWith('\')) { ''; } else { '\'; });
 
         return $this;
     }
@@ -151,7 +151,7 @@ Class LOGGER
 
     [void]outHost()
     {
-        $this.getLogMessage() | Out-Host
+        $this.getLogMessage() | Out-Host;
     }
 
     [string]outString()
@@ -161,7 +161,7 @@ Class LOGGER
     
     [void]Write()
     {
-        $this.getLogMessage() | Out-File -FilePath $($this.getLogFile()) -Encoding utf8 -Append
+        $this.getLogMessage() | Out-File -FilePath $($this.getLogFile()) -Encoding utf8 -Append;
     }
 
     #endregion
