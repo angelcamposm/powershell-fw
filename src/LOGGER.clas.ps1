@@ -154,7 +154,7 @@ Class LOGGER
         $this.getLogMessage() | Out-Host;
     }
 
-    [string]outString()
+    [string]toString()
     {
         return $this.getLogMessage();
     }
