@@ -147,11 +147,13 @@ Class LOGGER
         return $this;
     }
 
+    # OUTPUTS
+
     [string]toString()
     {
         return $this.getLogMessage();
     }
-
+    
     [void]Write()
     {
         $this.getLogMessage() | Out-File -FilePath $($this.getLogFile()) -Encoding utf8 -Append
@@ -159,5 +161,3 @@ Class LOGGER
 
     #endregion
 }
-
-[LOGGER]::New().setChannel('mensajes').addItem('usuario', 'yomismo').toString()
