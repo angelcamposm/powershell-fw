@@ -40,13 +40,6 @@ Class LOGGER
 
     #region METHODS
 
-    [LOGGER]addItem([string]$item, [string]$value)
-    {
-        $this.items.Add($item + '="' + $value + '"');
-
-        return $this;
-    }
-
     static hidden [void]checkPath([string]$path)
     {
         if (-not(Test-Path -Path $path -PathType Container)) {
@@ -104,6 +97,13 @@ Class LOGGER
 
         return $msg;
     }
+    
+    [LOGGER]addItem([string]$item, [string]$value)
+    {
+        $this.items.Add($item + '="' + $value + '"');
+
+        return $this;
+    }
 
     [LOGGER]setChannel([string]$channel)
     {
@@ -149,7 +149,12 @@ Class LOGGER
 
     # OUTPUTS
 
-    [string]toString()
+    [void]outHost()
+    {
+        $this.getLogMessage() | Out-Host
+    }
+
+    [string]outString()
     {
         return $this.getLogMessage();
     }
